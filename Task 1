@@ -1,0 +1,26 @@
+class WordLengthIterator:
+    def __init__(self, word_list):
+        self.word_list = word_list
+        self._index=0
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self._index < len(self.word_list):
+            current_word = self.word_list[self._index]
+            word_length = len(current_word)
+            self._index += 1
+            return word_length
+        else:
+            raise StopIteration
+def get_user_words():
+    user_input = input("Enter words: ")
+    words_list = user_input.split()
+    return words_list
+if __name__ == "__main__":
+    user_words = get_user_words()
+    if not user_words:
+        print("Error. No words entered.")
+    else:
+        word_lengths = WordLengthIterator(user_words)
+        print("\nWord lengths:")
+        for length in word_lengths:
