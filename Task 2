@@ -1,0 +1,30 @@
+class PowersOfTwoIterator:
+    def __init__(self, limit):
+        self._limit=limit
+        self._power=0
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self._power < self._limit:
+            result= 2**self._power
+            self._power+= 1
+            return result
+        else:
+            raise StopIteration
+def get_user_limit():
+    while True:
+        try:
+            user_input = input("Enter the exponent (for 2) ")
+            limit = int(user_input)
+            if limit <= 0:
+                print("Please enter a positive number.")
+                continue
+            return limit
+        except ValueError:
+            continue
+if __name__=="__main__":
+    limit=get_user_limit()
+    powers=PowersOfTwoIterator(limit)
+    print(f"\nThe first {limit} powers of 2:")
+    for value in powers:
+        print(value)
