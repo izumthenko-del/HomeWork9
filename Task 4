@@ -1,0 +1,16 @@
+import random
+import string
+def random_upper_letter_generator():
+    alphabet = string.ascii_uppercase
+    alphabet_length = len(alphabet)
+    while True:
+        random_index = random.randint(0, alphabet_length - 1)
+        yield alphabet[random_index]
+if __name__ == "__main__":
+    letter_gen = random_upper_letter_generator()
+    generated_letters = []
+    for i in range(10):
+        letter = next(letter_gen)
+        generated_letters.append(letter)
+    print("Letters:")
+    print("".join(generated_letters))
