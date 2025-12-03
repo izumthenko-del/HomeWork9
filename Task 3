@@ -1,0 +1,19 @@
+def powers_of_three_generator(limit_power):
+    for power in range(limit_power+1):
+        yield 3**power
+def get_user_limit_power():
+    while True:
+        try:
+            user_input = input("Enter the exponent (for 3) ")
+            limit = int(user_input)
+            if limit < 0:
+                continue
+            return limit
+        except ValueError:
+            continue
+if __name__ == "__main__":
+    limit = get_user_limit_power()
+    powers = powers_of_three_generator(limit)
+    print(f"\nThe first {limit} powers of 3:")
+    for value in powers:
+        print(value)
